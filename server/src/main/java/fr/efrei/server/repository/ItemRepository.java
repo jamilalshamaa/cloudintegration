@@ -1,10 +1,10 @@
-package fr.efrei.server.repository;
+package net.efrei.server.repository;
 
-import fr.efrei.server.domain.Item;
+import net.efrei.server.domain.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface ItemRepository extends JpaRepository<Item, Integer>{}
+public interface ItemRepository extends JpaRepository<Item, Integer>{
+}
+

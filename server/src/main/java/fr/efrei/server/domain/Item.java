@@ -1,18 +1,20 @@
-package fr.efrei.server.domain;
-
+package net.efrei.server.domain;
 import jakarta.persistence.*;
 
 @Entity
-
 public class Item {
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @SequenceGenerator(name="sequenceGenerator")
+
     private Integer id;
-
     private String name;
+    private Double price;
 
-    private double price;
+    public Item(){
+
+    }
 
     public Integer getId() {
         return id;
@@ -30,11 +32,11 @@ public class Item {
         this.name = name;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 }
