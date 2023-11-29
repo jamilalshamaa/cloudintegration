@@ -20,19 +20,22 @@ public class ItemResourceIT {
     @Transactional
     void createItems() throws Exception {
         int databaseSizeBeforeCreate = itemRepository.findAll().size();
-        //assertThat(databaseSizeBeforeCreate).isEqualTo(0);
+        //System.out.println("Database size before create: " + databaseSizeBeforeCreate);
+        assertThat(databaseSizeBeforeCreate).isEqualTo(0);
         // Create some items (replace this with your actual logic to create items)
         Item item1 = new Item();
-        item1.setId(1);
         item1.setName("Dummy");
+        item1.setPrice(20.00);
         itemRepository.save(item1);
 
         Item item2 = new Item();
-        item2.setId(2);
         item2.setName("Dummy2");
+        item2.setPrice(20.00);
         itemRepository.save(item2);
 
         int databaseSizeAfterCreate = itemRepository.findAll().size();
+        //System.out.println("Database size before create: " + databaseSizeAfterCreate);
+
         //assertThat(databaseSizeAfterCreate).isEqualTo(2);
         assertThat(databaseSizeAfterCreate).isEqualTo(databaseSizeBeforeCreate+2);
     }
