@@ -28,10 +28,9 @@ jobs:
           distribution: 'temurin'
       - name: Make gradlew executable
         run: chmod +x ./server/gradlew
-      - name: Configure Gradle Version
-        run: echo "gradle.version=8.4" >> gradle.properties
       - name: Build with Gradle
-        run: ./gradlew build
+        working-directory: ./server
+        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
           arguments: build
   test:
