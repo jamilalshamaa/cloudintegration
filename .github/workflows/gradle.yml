@@ -28,10 +28,12 @@ jobs:
           distribution: 'temurin'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-      - name: Build with Gradle Wrapper
-        run: gradlew.bat build  # Use gradlew.bat for Windows
+      - name: Clear Gradle Cache
+        run: |
+          ./gradlew clean
+          rm -rf $HOME/.gradle/caches
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2.6.0 # v2.6.0
+        uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
         with:
           arguments: build
   test:
@@ -45,8 +47,8 @@ jobs:
           distribution: 'temurin'
       - name: Make gradlew executable
         run: chmod +x ./gradlew
-      - name: test with Gradle Wrapper
-        run: gradlew.bat test  # Use gradlew.bat for Windows
+      - name: Build with Gradle Wrapper
+        run: gradlew.bat build  # Use gradlew.bat for Windows
       - name: Build with Gradle
         uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0ZZ
         with:
